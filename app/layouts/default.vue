@@ -3,16 +3,16 @@
 </script>
 
 <template>
-        <Header />
-        <div class="container">
-            <slot />
-        </div>
+    <Header />
+    
+    <slot />
 </template>
 
-<style scoped lang="scss">
-.container {
-    max-width: 1230px;
-    padding: 0 15px;
-    margin: 0 auto;
-}
+<style lang="scss">
+    * {
+        box-sizing: border-box;
+    }
+    a {
+        display: inline-block;
+    }
 </style>

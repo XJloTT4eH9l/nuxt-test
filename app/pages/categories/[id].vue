@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+    const params = useRoute().params;
 </script>
 
 <template>
     <div>
-        <h1>Categories Page</h1>
+        <h1>{{ params.id }}</h1>
     </div>
 </template>
 
