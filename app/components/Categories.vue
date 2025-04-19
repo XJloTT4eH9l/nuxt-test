@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+    import { API_CATEGORIES } from '~/api';
     import type { Category } from '~/types';
 
-    const { data, error, status } = await useFetch<Category[]>('https://dummyjson.com/products/categories');
+    const { data } = await useFetch<Category[]>(API_CATEGORIES);
 </script>
 
 <template>

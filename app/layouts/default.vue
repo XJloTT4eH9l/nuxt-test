@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <Header />
     
@@ -14,5 +10,9 @@
     }
     a {
         display: inline-block;
+    }
+    body {
+        line-height: 1.5;
+        font-size: 16px;
     }
 </style>

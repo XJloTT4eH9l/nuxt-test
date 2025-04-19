@@ -49,6 +49,9 @@
                 &.active {
                     color: #0ba70b;
                 }
+                &:hover {
+                    color: #0ba70b;
+                }
             }
         }
     }
