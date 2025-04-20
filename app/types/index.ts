@@ -48,6 +48,7 @@ interface Meta {
     barcode:   string;
     qrCode:    string;
 }
+
 interface Review {
     rating:        number;
     comment:       string;
@@ -56,4 +57,9 @@ interface Review {
     reviewerEmail: string;
 }
 
-export type { Category, ProductsResponce, Product };
+interface BreadcrumbsItem {
+    name: string;
+    link?: string | undefined;
+}
+
+export type { Category, ProductsResponce, Product,  BreadcrumbsItem };

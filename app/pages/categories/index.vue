@@ -1,8 +1,17 @@
+<script setup lang="ts">
+    import { type BreadcrumbsItem } from '~/types';
+    
+    const breadCrumbsOptions = computed<BreadcrumbsItem[]>(() => {
+        return [
+            { name: 'Categories' }
+        ]
+    });
+</script>
+
 <template>
-    <main class="container">
-        <h1>Categories list</h1>
-        <Categories />
-    </main>
+    <Breadcrumbs :options="breadCrumbsOptions" />
+    <h1>Categories list</h1>
+    <Categories />
 </template>
 
 <style scoped>

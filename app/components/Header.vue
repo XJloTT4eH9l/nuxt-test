@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
     <header class="header">
         <div class="header__container">
@@ -13,7 +10,13 @@
                         <NuxtLink to="/" active-class="active">Home</NuxtLink>
                     </li>
                     <li class="header__nav-item">
-                        <NuxtLink to="/categories" active-class="active">Categories</NuxtLink>
+                        <NuxtLink 
+                            to="/categories" 
+                            active-class="active" 
+                            :class="{ 'sub-active': $route.path.startsWith('/categories') }"
+                        >
+                            Categories
+                        </NuxtLink>
                     </li>
                 </ul>
             </nav>
@@ -48,6 +51,10 @@
                 transition: color 0.2s linear;
                 &.active {
                     color: #0ba70b;
+                }
+                &.sub-active {
+                    text-decoration: underline;
+                    text-underline-offset: 5px;
                 }
                 &:hover {
                     color: #0ba70b;

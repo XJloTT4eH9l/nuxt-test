@@ -1,29 +1,36 @@
 <script setup lang="ts">
+    import { ref } from 'vue';
     import { API_PRODUCTS_BY_CATEGORY } from '~/api';
-    import type { ProductsResponce } from '~/types';
+    import makeCategoryTitle from '~/helpers/makeCategoryTitle';
+    import type { ProductsResponce, BreadcrumbsItem } from '~/types';
+
     const params = useRoute().params;
+    const categoryName = ref<string>(makeCategoryTitle(String(params.category)));
+
+    const breadCrumbsOptions = computed<BreadcrumbsItem[]>(() => {
+        return [
+            { name: 'Categories', link: '/categories' },
+            { name: categoryName.value },
+        ]
+    });
     
     const { data, error } = await useFetch<ProductsResponce>(`${API_PRODUCTS_BY_CATEGORY}/${params.category}`);
 </script>
 
 <template>
-    <main class="container">
+    <Breadcrumbs :options="breadCrumbsOptions" />
+    <div v-if="error">Error during the download</div>
 
-        <div v-if="error">Error during the download</div>
-
-        <div v-else class="content">
-            <h1>{{ params.id }}</h1>
-            <ul class="products-list">
-                <ProductCard
-                    v-for="product in data?.products"
-                    :key="product.id"
-                    :item = product
-                />
-            </ul>
-            
-        </div>
-        
-    </main>
+    <template v-else class="content">
+        <h1>{{ categoryName }}</h1>
+        <ul class="products-list">
+            <ProductCard
+                v-for="product in data?.products"
+                :key="product.id"
+                :item = product
+            />
+        </ul>
+    </template>
 </template>
 
 <style scoped lang="scss">

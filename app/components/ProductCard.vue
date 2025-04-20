@@ -8,13 +8,24 @@
 
 <template>
     <li class="item">
-        <div class="item__img-wrapper">
+        <div class="item__img-wrapper" :class="item.images[1] && 'item__img-wrapper--multiple'">
             <NuxtImg 
-                class="item__img"
+                class="item__img item__img--main"
                 width="300px"
                 height="300px"
                 fit="contain"
                 :src="item.images[0]" 
+                :alt="item.title + 'image'" 
+                placeholder
+                placeholder-class="item__img-placeholder"
+            />
+            <NuxtImg
+                v-if="item.images[1]" 
+                class="item__img item__img--secondary"
+                width="300px"
+                height="300px"
+                fit="contain"
+                :src="item.images[1]" 
                 :alt="item.title + 'image'" 
                 placeholder
                 placeholder-class="item__img-placeholder"
@@ -35,16 +46,33 @@
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         &__img-wrapper {
+            position: relative;
             margin: 0 auto;
             width: 300px;
             height: 300px;
             border-radius: 10px;
             border: 1px solid rgb(175, 172, 172);
+            &--multiple {
+                &:hover {
+                    .item__img--main {
+                        opacity: 0;
+                    }
+                    .item__img--secondary {
+                        opacity: 1;
+                    }
+                }
+            }
         }
         &__img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
+            transition: opacity 0.2s ease-in;
+            &--secondary {
+                opacity: 0;
+            }
             &-placeholder {
                 display: block;
                 width: 300px;
