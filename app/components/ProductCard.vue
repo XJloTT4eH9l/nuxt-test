@@ -32,7 +32,7 @@
             />
         </div>
         <div class="item__title">{{ item.title }}</div>
-        <NuxtLink class="item__link" :to="`/categories/${item.category}/product/${item.id}`">View</NuxtLink>
+        <NuxtLink class="item__link" :to="`/categories/${item.category}/${item.id}`">View</NuxtLink>
     </li>
 </template>
 
