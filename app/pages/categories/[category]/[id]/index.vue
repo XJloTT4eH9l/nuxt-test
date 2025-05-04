@@ -1,11 +1,14 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { BASE } from '~/api';
+    import { useCartStore } from '#imports';
     import makeCategoryTitle from '~/helpers/makeCategoryTitle';
     import type {  Product, BreadcrumbsItem } from '~/types';
 
     const params = useRoute().params;
 
+    const cartStore = useCartStore();
+    
     const breadCrumbsOptions = computed<BreadcrumbsItem[]>(() => {
         return [
             { name: 'Categories', link: '/categories' },
@@ -15,8 +18,6 @@
     });
    
     const { data, error } = await useFetch<Product>(`${BASE}/${params.id}`);
-
-    provide('data', data);
 
     const mainImage = ref<string | undefined>(data?.value?.images[0]);
 
@@ -68,6 +69,10 @@
             <div class="product__right">
                 <h1 class="product__title">{{ data.title }}</h1>
                 <div v-if="data.description" class="product__description">{{ data.description }}</div>
+                <div class="product__price-wrapper">
+                    <div class="product__price">{{ data.price }}$</div>
+                    <button class="product__cart-button">Add to cart</button>
+                </div>
                 <div class="product__rating-wrapper">
                     <div class="product__rating">
                         <span>Rating: {{ data.rating }} / 5</span>
@@ -143,6 +148,18 @@
                     background-position: 200% 0;
                 }
             }
+        }
+        &__price-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__cart-button {
+            width: 150px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: #ffffff;
+            background-color: #0cb90c;
         }
         &__rating {
             width: max-content;

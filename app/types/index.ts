@@ -36,6 +36,10 @@ interface Product {
     thumbnail:            string;
 }
 
+interface CartItem extends Pick<Product, 'id' | 'title' | 'price' | 'thumbnail'> {
+    quantity: number;
+}
+
 interface Dimensions {
     width:  number;
     height: number;
@@ -62,4 +66,4 @@ interface BreadcrumbsItem {
     link?: string | undefined;
 }
 
-export type { Category, ProductsResponce, Product,  BreadcrumbsItem };
+export type { Category, ProductsResponce, Product,  BreadcrumbsItem, CartItem };
