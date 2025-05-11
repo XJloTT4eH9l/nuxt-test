@@ -79,12 +79,10 @@
                     </div>
                     <div class="product__barcode">Code: {{ data.meta.barcode }}</div>
                 </div>
-                <NuxtLink :to="`/categories/${params.category}/${params.id}/comments`">Comments</NuxtLink>
+                <NuxtLink class="product__reviews-link" :to="`/categories/${params.category}/${params.id}/reviews`">Reviews</NuxtLink>
             </div>
         </div>
     </template>   
-
-    <!-- <NuxtPage title="comments title" /> -->
 </template>
 
 <style scoped lang="scss">
@@ -164,8 +162,22 @@
         &__rating {
             width: max-content;
             padding: 8px;
-            border: 1px solid #0cb90c;
+            border: 1px solid #EFCE4A;
             border-radius: 6px;
+            span {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                &::after {
+                    content: '';
+                    width: 20px;
+                    height: 20px;
+                    background-image: url("data:image/svg+xml,%3Csvg height='200px' width='200px' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 53.867 53.867' xml:space='preserve' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpolygon style='fill:%23EFCE4A;' points='26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 '%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                }
+            }
             &-wrapper {
                 display: flex;
                 justify-content: space-between;
@@ -175,6 +187,16 @@
         &__barcode {
             font-size: 14px;
             color: rgb(161, 161, 161);
+        }
+        &__reviews-link {
+            width: max-content;
+            padding: 8px 10px;
+            border: 1px solid #0cb90c;
+            border-radius: 6px;
+            transition: background-color 0.2s ease-in;
+            &:hover {
+                background-color: #0cb90c;
+            }
         }
     }
 </style>

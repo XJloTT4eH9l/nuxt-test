@@ -24,6 +24,7 @@
     .breadcrumbs {
         display: flex;
         align-items: center;
+        margin: 10px 0;
         gap: 20px;
         &__item {
             &:not(:last-child) {
