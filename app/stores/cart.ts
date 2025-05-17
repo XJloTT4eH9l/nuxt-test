@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 import type { CartItem } from "~/types";
 
 export const useCartStore = defineStore('cartStore', () => {
@@ -48,14 +48,16 @@ export const useCartStore = defineStore('cartStore', () => {
     }
 
     const removeItemFromCart = (id: number): void => {
-        cartItems.value.filter(item => item.id != id);
+        cartItems.value = cartItems.value.filter(item => item.id !== id);
     };
 
     const clearCart = (): void => {
         cartItems.value = [];
     };
 
-    loadCartFromStorage();
+    if (import.meta.client) {
+        loadCartFromStorage();
+    }
 
     watch(
         cartItems,

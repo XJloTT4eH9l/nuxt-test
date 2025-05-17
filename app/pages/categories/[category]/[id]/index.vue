@@ -1,14 +1,13 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
     import { BASE } from '~/api';
     import { useCartStore } from '#imports';
     import makeCategoryTitle from '~/helpers/makeCategoryTitle';
     import type {  Product, BreadcrumbsItem } from '~/types';
 
     const params = useRoute().params;
-
     const cartStore = useCartStore();
-    
+    const itemInCart = computed(() => cartStore.cartItems.find(item => item.id === Number(params.id)));
     const breadCrumbsOptions = computed<BreadcrumbsItem[]>(() => {
         return [
             { name: 'Categories', link: '/categories' },
@@ -16,13 +15,24 @@
             { name: data.value ? data.value.title : String(params.id) }
         ]
     });
-   
     const { data, error } = await useFetch<Product>(`${BASE}/${params.id}`);
-
     const mainImage = ref<string | undefined>(data?.value?.images[0]);
 
     function chnangeMainImg(imgSrc: string):void {
         mainImage.value = imgSrc;
+    }
+
+    function onAddToCart() {
+        if(data && data.value) {
+            const newCartItem = {
+                id: data.value.id,
+                title: data.value.title,
+                price: data.value.price,
+                thumbnail: data.value.thumbnail,
+                quantity: 1
+            }
+            cartStore.addItemToCart(newCartItem);
+        }
     }
 </script>
 
@@ -71,7 +81,17 @@
                 <div v-if="data.description" class="product__description">{{ data.description }}</div>
                 <div class="product__price-wrapper">
                     <div class="product__price">{{ data.price }}$</div>
-                    <button class="product__cart-button">Add to cart</button>
+                    <template v-if="!itemInCart">
+                        <button  @click="onAddToCart" class="product__cart-button">Add to cart</button>
+                    </template>
+                    <template v-else>
+                        <Counter
+                            :id="data.id" 
+                            :quantity="itemInCart.quantity"
+                            :increment="cartStore.incrementItemQuantity"
+                            :decriment="cartStore.decrimentItemQuantity"
+                        />
+                    </template>
                 </div>
                 <div class="product__rating-wrapper">
                     <div class="product__rating">
