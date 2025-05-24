@@ -26,7 +26,12 @@
         align-items: center;
         margin: 10px 0;
         gap: 20px;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            overflow-x: auto;
+        }
         &__item {
+            white-space: nowrap;
             &:not(:last-child) {
                 color: #0cb90c;
                 position: relative;

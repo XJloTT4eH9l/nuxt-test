@@ -38,8 +38,9 @@
     useSeoMeta({
         title: `TechnoStore - ${data ? data.value?.title : 'product'}`,
         ogTitle: `TechnoStore - ${data ? data.value?.title : 'product'}`,
-        description: `${data && data.value?.description}`,
-        ogDescription: `${data && data.value?.description}`,
+        description: data && data.value?.description,
+        ogDescription: data && data.value?.description,
+        ogImage: data?.value?.images[0]
     });
 </script>
 
@@ -118,11 +119,22 @@
         justify-content: space-between;
         gap: 30px;
         margin-top: 30px;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
         &__left, &__right {
             width: 45%;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+        }
+        &__left {
+            @media screen and (max-width: 768px) {
+                align-items: center;
+            }
         }
         &__title {
             font-size: 28px;
@@ -139,6 +151,14 @@
             height: 400px;
             border: 1px solid rgb(167, 164, 164);
             border-radius: 6px;
+            @media screen and (max-width: 1024px) {
+                width: 300px;
+                height: 300px;
+            }
+            @media screen and (max-width: 500px) {
+                width: 250px;
+                height: 250px;
+            }
             img {
                 width: 100%;
                 height: 100%;

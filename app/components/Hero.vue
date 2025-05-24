@@ -6,7 +6,7 @@
                 <p>Discover the latest in technology at unbeatable prices – all in one place</p>
                 <NuxtLink to="/categories">Browse categories</NuxtLink>
             </div>
-            <NuxtImg src="/iphone.png" width="200px" /> 
+            <NuxtImg src="/iphone.png" width="200px" alt="hero image iphone" /> 
         </div>
     </section>
 </template>
@@ -15,6 +15,9 @@
     .hero {
         height: 40vh;
         background-color: rgb(176, 233, 159);
+        @media screen and (max-width: 768px) {
+            height: auto;
+        }
         &__inner { 
             display: flex;
             justify-content: space-between;
@@ -24,9 +27,17 @@
             margin: auto;
             padding: 0 15px;
             gap: 15px;
+            @media screen and (max-width: 768px) {
+                flex-direction: column-reverse;
+                padding: 15px;
+            }
         }
         &__info {
             max-width: 400px;
+            @media screen and (max-width: 768px) {
+                max-width: unset;
+                text-align: center;
+            }
             h1 {
                 font-size: 32px;
                 font-weight: 700;

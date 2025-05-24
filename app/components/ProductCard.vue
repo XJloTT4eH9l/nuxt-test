@@ -52,6 +52,10 @@
             height: 300px;
             border-radius: 10px;
             border: 1px solid rgb(175, 172, 172);
+            @media screen and (max-width: 1024px) {
+                width: 200px;
+                height: 200px;
+            }
             &--multiple {
                 &:hover {
                     .item__img--main {

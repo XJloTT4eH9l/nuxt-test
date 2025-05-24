@@ -2,7 +2,7 @@
     <header class="header">
         <div class="header__container">
             <NuxtLink to="/">
-                <NuxtImg src="/logo.svg" width="40px" />
+                <NuxtImg src="/logo.svg" width="40px" alt="TechnoStore logo" />
             </NuxtLink>
             <nav class="header__nav">
                 <ul class="header__nav-list">

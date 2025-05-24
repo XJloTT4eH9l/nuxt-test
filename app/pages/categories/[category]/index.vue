@@ -21,6 +21,7 @@
         ogTitle: `TechnoStore - ${categoryName.value}`,
         description: `TechnoStore - buy ${categoryName.value}`,
         ogDescription: `TechnoStore - buy ${categoryName.value}`,
+        ogImage: '/logo.svg'
     });
 </script>
 
@@ -51,5 +52,11 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
+        @media screen and (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

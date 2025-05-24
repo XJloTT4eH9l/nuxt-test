@@ -4,16 +4,13 @@
         ogTitle: 'TechnoStore',
         description: 'Buy Phones, Computers, Tablets & More – Top Tech at Great Prices',
         ogDescription: 'Buy Phones, Computers, Tablets & More – Top Tech at Great Prices',
+        ogImage: '/logo.svg'
     });
 </script>
 
 <template>
-    <main>
-        <Hero />
-        <div class="container">
-            <Categories />
-        </div>
-    </main>
+    <Hero />
+    <Categories />
 </template>
 
 <style lang="scss">

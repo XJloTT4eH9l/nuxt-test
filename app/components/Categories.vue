@@ -34,6 +34,13 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
+            @media screen and (max-width: 1024px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @media screen and (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
         }
         &__item {
             width: 100%;
@@ -43,6 +50,9 @@
             text-align: center;
             border-radius: 6px;
             transition: background-color 0.2s ease;
+            @media screen and (max-width: 768px) {
+                padding: 6px;
+            }
             &:hover {
                 background-color: #0cb90c;
             }

@@ -21,6 +21,7 @@
         ogTitle: `TechnoStore - ${data ? data.value?.title + 'reviews' : 'product reviews'}`,
         description: `Reviews about ${data && data.value?.title}`,
         ogDescription: `Reviews about ${data && data.value?.title}`,
+        ogImage: data?.value?.images[0]
     });
 </script>
 

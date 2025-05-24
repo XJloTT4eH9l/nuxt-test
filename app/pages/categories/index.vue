@@ -12,6 +12,7 @@
         ogTitle: 'TechnoStore - Categories',
         description: 'TechnoStore - Categories',
         ogDescription: 'TechnoStore - Categories',
+        ogImage: '/logo.svg'
     });
 </script>
 
