@@ -15,6 +15,13 @@
     });
     
     const { data, error } = await useFetch<ProductsResponce>(`${API_PRODUCTS_BY_CATEGORY}/${params.category}`);
+
+    useSeoMeta({
+        title: `TechnoStore - ${categoryName.value}`,
+        ogTitle: `TechnoStore - ${categoryName.value}`,
+        description: `TechnoStore - buy ${categoryName.value}`,
+        ogDescription: `TechnoStore - buy ${categoryName.value}`,
+    });
 </script>
 
 <template>

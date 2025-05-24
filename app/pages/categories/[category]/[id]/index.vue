@@ -34,6 +34,13 @@
             cartStore.addItemToCart(newCartItem);
         }
     }
+
+    useSeoMeta({
+        title: `TechnoStore - ${data ? data.value?.title : 'product'}`,
+        ogTitle: `TechnoStore - ${data ? data.value?.title : 'product'}`,
+        description: `${data && data.value?.description}`,
+        ogDescription: `${data && data.value?.description}`,
+    });
 </script>
 
 <template>

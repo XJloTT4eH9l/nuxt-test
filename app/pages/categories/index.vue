@@ -6,6 +6,13 @@
             { name: 'Categories' }
         ]
     });
+
+    useSeoMeta({
+        title: 'TechnoStore - Categories',
+        ogTitle: 'TechnoStore - Categories',
+        description: 'TechnoStore - Categories',
+        ogDescription: 'TechnoStore - Categories',
+    });
 </script>
 
 <template>

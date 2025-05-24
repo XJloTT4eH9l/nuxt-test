@@ -1,19 +1,9 @@
 import { defineStore } from "pinia";
-import { ref, watch, onMounted } from "vue";
+import { ref } from "vue";
 import type { CartItem } from "~/types";
 
 export const useCartStore = defineStore('cartStore', () => {
     const cartItems: Ref<CartItem[]> = ref([]);
-
-    const loadCartFromStorage = (): void => {
-        const data = localStorage.getItem('cartItems');
-
-        if (data) {
-            cartItems.value = JSON.parse(data);
-        } else {
-            cartItems.value = [];
-        }
-    };
 
     const addItemToCart = (item: CartItem): void => {
         const existingItem = findCartItem(item.id);
@@ -55,18 +45,6 @@ export const useCartStore = defineStore('cartStore', () => {
         cartItems.value = [];
     };
 
-    if (import.meta.client) {
-        loadCartFromStorage();
-    }
-
-    watch(
-        cartItems,
-        (newCart) => {
-            localStorage.setItem('cartItems', JSON.stringify(newCart));
-        },
-        { deep: true }
-    );
-
     return {
         cartItems,
         addItemToCart,
@@ -76,4 +54,6 @@ export const useCartStore = defineStore('cartStore', () => {
         removeItemFromCart,
         clearCart
     }
+}, {
+    persist: true
 });

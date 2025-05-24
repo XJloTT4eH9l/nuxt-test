@@ -1,3 +1,12 @@
+<script setup lang="ts">
+    useSeoMeta({
+        title: 'TechnoStore',
+        ogTitle: 'TechnoStore',
+        description: 'Buy Phones, Computers, Tablets & More – Top Tech at Great Prices',
+        ogDescription: 'Buy Phones, Computers, Tablets & More – Top Tech at Great Prices',
+    });
+</script>
+
 <template>
     <main>
         <Hero />

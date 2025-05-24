@@ -28,5 +28,10 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@pinia/nuxt']
+  modules: [
+    '@nuxtjs/tailwindcss', 
+    '@nuxt/image', 
+    '@pinia/nuxt', 
+    'pinia-plugin-persistedstate/nuxt'
+  ]
 })

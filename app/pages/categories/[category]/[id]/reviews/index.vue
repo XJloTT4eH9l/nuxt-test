@@ -15,6 +15,13 @@
             { name: 'Reviews' }
         ]
     });
+
+    useSeoMeta({
+        title: `TechnoStore - ${data ? data.value?.title + 'reviews' : 'product reviews'}`,
+        ogTitle: `TechnoStore - ${data ? data.value?.title + 'reviews' : 'product reviews'}`,
+        description: `Reviews about ${data && data.value?.title}`,
+        ogDescription: `Reviews about ${data && data.value?.title}`,
+    });
 </script>
 
 <template>
