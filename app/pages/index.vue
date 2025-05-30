@@ -1,4 +1,8 @@
 <script setup lang="ts">
+    definePageMeta({
+        layout: 'home'
+    });
+
     useSeoMeta({
         title: 'TechnoStore',
         ogTitle: 'TechnoStore',
@@ -10,7 +14,9 @@
 
 <template>
     <Hero />
-    <Categories />
+    <div class="container">
+        <Categories />
+    </div>
 </template>
 
 <style lang="scss">

@@ -90,6 +90,10 @@
                 );
                 background-size: 200% 100%;
                 animation: shimmer 1.5s infinite;
+                @media screen and (max-width: 1024px) {
+                    width: 200px;
+                    height: 200px;
+                }
                 @keyframes shimmer {
                     0% {
                         background-position: -200% 0;
